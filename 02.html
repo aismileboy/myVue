@@ -1,0 +1,74 @@
+<!-- vue 常用指令 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 留坑 -->
+    <div id="app"></div>
+    <!-- 引包 -->
+    <script src="vue.js"></script>
+    <!-- 实例化 -->
+    <script>
+        new Vue({
+            el: '#app',
+            template: `
+            <div>
+                <div v-text="mytext"></div>
+                <hr/>
+
+                <div v-html="myhtml"></div>
+
+                <button v-if="num==1">测试v-if</button>
+                <button v-else-if="num==2">测试v-else-if</button>
+                <button v-else="num">测试v-else</button>
+
+
+                <div v-show="checkshow">我是v-SHOW</div>
+
+                <ul>
+                    <li v-for="(item,index) in arrayfor">
+                        {{item}} - {{index}}
+                    </li>
+                </ul>
+
+                <ul>
+                    <li v-for="(obj,key) in objfor">
+                        {{ key }} - {{ obj }}
+                    </li>
+                </ul>
+            </div>
+            
+            `,
+            data: function(){
+                return {
+                    mytext: '<h1>我这里是v-text</h1>',
+                    myhtml: '<h1>我这里是v-html</h1>',
+                    checkif: false,
+                    num: 3,
+                    checkshow: false,
+                    arrayfor: ['篮球','足球','排球'],
+                    objfor: {name:'zhangsan',age:'15',job:'student'}
+                }
+            }
+    })
+    </script>
+</body>
+</html>
+
+<!--
+
+    v-text 是给 元素的 innerText 属性进行赋值，不可以解析包含标签的文本
+    v-html 是给 元素的 innerHtml 属性进行赋值，可以解析包含标签的文本
+
+    v-if 与 v-show 功能一样，主要是用来 显示/隐藏 数据的
+    v-if 主要是通过 append、remove 来实现的 当值为false时,该节点不在DOM中显示
+    v-show 主要是通过 display:none 来显示与隐藏数据的，无论值是true还是false，该DOM节点一直存在于网页中
+
+    v-for 遍历 对象元素时，每个元素的值 是 对象键值对中的 value
+    
+-->

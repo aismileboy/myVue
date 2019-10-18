@@ -1,0 +1,58 @@
+<!-- 过滤器 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 留坑 -->
+    <div id="app">
+        我输入的：<input type="text" name="" v-model="instring"><br>
+        我输出的：{{ instring }} <br>
+        <!-- 翻转输出：{{ instring | reverse}} -->
+        <!-- 也可以向过滤器方法中传入参数 参数为arg -->
+        {{ instring | reverse('翻转输出：') }}
+    </div>
+    <!-- 引包 -->
+    <script src="vue.js"></script>
+    <!-- 实例化 -->
+    <script>
+        //全局过滤器
+        // Vue.filter('reverse',function(val){
+        //     return val.split('').reverse().join('')
+        // })
+
+
+        //组件外的 this 指的是window
+        console.log(this)
+
+
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                   instring: '' 
+                }
+            },
+            //组件内过滤器
+            filters: {
+                reverse(val,arg){
+                    //字符串转数组  翻转   数组转字符串
+                    return arg + val.split('').reverse().join('')
+                }
+            },
+            //组件创建完成,即new Vue()实例创建完成,页面未加载
+            created(){
+                //组件内的 this  指的是vue实例
+                console.log(this,'vue_')
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+</html>
