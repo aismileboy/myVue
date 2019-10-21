@@ -1,12 +1,14 @@
 <!-- 单双向数据绑定及事件绑定 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <!-- 留坑 -->
     <div id="app"></div>
@@ -29,19 +31,20 @@
                     <button v-on:click="change">点击我改变name变量</button>
                 </div>
             `,
-            data:function(){
+            data: function () {
                 return {
                     name: 'hello'
                 }
             },
             methods: {
-                change:function(){
+                change: function () {
                     this.name = '我改变了,是在方法属性里面定义的方法'
                 }
             },
         })
     </script>
 </body>
+
 </html>
 
 
