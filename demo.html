@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h4>过滤器</h4>
+        <input type="text" v-model="msg"><br>
+        {{ msg | reverse('翻转') }}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.filter('reverse',function(val,data){
+            return data + val.split('').reverse().join('')
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    msg: ''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
