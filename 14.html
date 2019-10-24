@@ -1,0 +1,116 @@
+<!-- 路由传参与取参 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由传参与取参</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="vue.js"></script>
+    <!-- 引入路由插件 -->
+    <script src="vue-router.js"></script>
+    <script>
+        var Login = {
+            template: `
+            <div>登陆页面 -- {{ msg }}</div>
+         `,
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            created() {
+                this.msg = this.$route.query.id
+            }
+
+        }
+
+        var Register = {
+            template: `
+             <div>注册页面 -- {{ msg }}</div>
+           `,
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            created() {
+                this.msg = this.$route.params.foo
+            },
+            //props: ['foo']
+        }
+        //注册使用路由插件
+        Vue.use(VueRouter)
+
+        //创建路由实例
+        var router = new VueRouter({
+            //配置路由对象
+            routes: [{
+                    path: '/login',
+                    name: 'login',
+                    component: Login
+                },
+                {
+                    path: '/register/:foo',
+                    name: 'register',
+                    //props: true,                                           添加props属性值为 true 时,在组件中创建 props['foo'] 进行接受传过来的参数,可以直接在页面使用 foo
+                    component: Register
+                }
+            ]
+        })
+
+        new Vue({
+            el: '#app',
+            //将路由引入 vue 实例中
+            router,
+            template: `
+            <div>
+                <router-link :to="{name:'login',query:{id:'123'}}">登录</router-link> |
+                <router-link :to="{name:'register',params:{foo:'bar'}}">注册</router-link> |
+                <button @click="jsLink">js跳转到登录</button>
+                <router-view :key="$route.fullPath"></router-view>    
+            </div>
+           `,
+            data() {
+                return {
+
+                }
+            },
+            methods: {
+                jsLink(){
+                    this.$router.push({name:'login',query:{id:'456'}})
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
+
+<!--
+   1.路由传参   当使用对象作为路由的时候，to前面要加一个冒号,表示绑定
+
+   2.路由传参分两种:
+        1)查询参
+            (传参)  :to="{name:'login',query:{id:'xxx'}}"
+            (取参)  this.$route.query.id
+        
+        2) 路由参数
+            (传参)  :to="{name:'register',params:{id:'xxx'}}"                           ---  params 必须与 name 配合使用, 与 path 使用无效
+            (取参)  this.$route.params.id
+            该方法 必须要对路由规则进行配置   {path:'/register/:id',name:'register',component: Register}
+            若不配置,刷新页面 参数会丢失
+
+    
+    当用js也跳转到同一个页面,只是传的参数不一样,这时页面不会刷新的,从而导致数据没有更新
+    这是因为  路由跳转的原理是 利用hashchange 事件监听 url的hash的改变,由于页面url 没有发生变化,只是参数不同,
+    不会触发hashchange事件,所以 没有变化
+
+    解决方案:  <router-view :key="$route.fullPath"></router-view> 
+
+-->

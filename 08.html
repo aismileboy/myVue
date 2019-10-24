@@ -1,12 +1,14 @@
 <!-- 父子组件间通信 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>父子组件间通信</title>
 </head>
+
 <body>
     <!-- 留坑 -->
     <div id="app"></div>
@@ -22,19 +24,19 @@
                 </div>
             `,
             props: ['sendChild'],
-            data(){
+            data() {
                 return {
 
                 }
             },
             methods: {
-                sendParent(){
-                    this.$emit('baba','儿子给你的')
+                sendParent() {
+                    this.$emit('baba', '儿子给你的')
                 }
             },
         }
 
-        var Parent  = {
+        var Parent = {
             template: `
                 <div>
                     <div>我是父组件 - {{msg}}</div> 
@@ -44,13 +46,13 @@
             components: {
                 Child
             },
-            data(){
+            data() {
                 return {
                     msg: ''
                 }
             },
             methods: {
-                reverse(val){
+                reverse(val) {
                     this.msg = val
                 }
             }
@@ -65,14 +67,15 @@
                     <parent></parent>
                 </div>
             `,
-            data(){
+            data() {
                 return {
-                    
+
                 }
             }
         })
     </script>
 </body>
+
 </html>
 
 <!--
