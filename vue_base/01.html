@@ -1,0 +1,40 @@
+<!-- 引包、留坑、实例化 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 留坑 -->
+    <div id="app"></div>
+    <!-- 引包 -->
+    <script src="vue.js"></script>
+    <!-- 实例化 -->
+    <script>
+        var msg = 'Hello Vue.js!'
+        new Vue({
+            el: '#app',
+            // 注意：template模板中只能有一个根节点，否则无法匹配到其中的内容，会报编译错误
+            template: `
+                <div>我这里是模板内容 - ${this.msg}</div>
+            `,
+            data:function(){
+                return {
+                    msg: 'Hello Vue!'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+<!--
+
+    es6 语法： 模板字符串  ` `
+    模板字符串的优点是：可以按照原样格式输出且可以换行，不需要 进行字符串拼接，比较简便
+    另外，可以通过 ${} 来获取数据的值
+-->

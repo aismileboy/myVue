@@ -1,0 +1,93 @@
+<!-- 父子组件间通信 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件间通信</title>
+</head>
+
+<body>
+    <!-- 留坑 -->
+    <div id="app"></div>
+    <!-- 引包 -->
+    <script src="vue.js"></script>
+    <!-- 实例化 -->
+    <script>
+        var Child = {
+            template: `
+                <div>
+                    <div>{{ sendChild }}</div>
+                    <button @click="sendParent">子组件传递给父组件</button>
+                </div>
+            `,
+            props: ['sendChild'],
+            data() {
+                return {
+
+                }
+            },
+            methods: {
+                sendParent() {
+                    this.$emit('baba', '儿子给你的')
+                }
+            },
+        }
+
+        var Parent = {
+            template: `
+                <div>
+                    <div>我是父组件 - {{msg}}</div> 
+                    <child sendChild = "父亲给你的" @baba = "reverse"></child>  
+                </div>
+            `,
+            components: {
+                Child
+            },
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            methods: {
+                reverse(val) {
+                    this.msg = val
+                }
+            }
+        }
+        new Vue({
+            el: '#app',
+            components: {
+                Parent
+            },
+            template: `
+                <div>
+                    <parent></parent>
+                </div>
+            `,
+            data() {
+                return {
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<!--
+    父组件 向 子组件 传值
+    主要是通过 在子组件中添加属性, 将要传的值 赋给 属性,然后在 子组件中 定义 props:['属性名'],用来接受传过来的值
+    子组件 可以 对传过来的值 任意操作使用
+
+    子组件 向 父组件 传值
+    主要是通过 this.$emit("自定义事件名",'参数1','参数2'), 触发一个事件
+    在父组件的 通过 @自定义事件名 = "fun"
+    fun(val){                       //方法实现上 必须含有参数 用来接受子组件传过来的值
+
+    }
+
+-->
