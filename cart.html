@@ -91,11 +91,12 @@
                     handler(){
                         //本地存储数据
                         window.localStorage.setItem('cart',JSON.stringify(this.cartarr))
-                    }
+                    },
+                    deep:true
                 }
             },
         }
-        new Vue({
+        new Vue({   
             el: '#app',
             components: {
                 Cart
