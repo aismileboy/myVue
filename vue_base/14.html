@@ -73,7 +73,7 @@
                 <router-link :to="{name:'login',query:{id:'123'}}">登录</router-link> |
                 <router-link :to="{name:'register',params:{foo:'bar'}}">注册</router-link> |
                 <button @click="jsLink">js跳转到登录</button>
-                <router-view ：key="$route.fullPath"></router-view>    
+                <router-view :key="$route.fullPath"></router-view>    
             </div>
            `,
             data() {
