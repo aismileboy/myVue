@@ -66,9 +66,22 @@ export default {
         }
     },
     methods: {
-        submitHandler(e){
+        async submitHandler(e){
             //阻止冒泡
             e.preventDefault();
+            try {
+                const result = await this.$http.get('/api/login',{params: this.model})
+                if(result.code == '0'){
+                    this.$store.commit('settoken',result.token)
+                    window.localStorage.setItem('token',result.token)
+                    //跳转至首页
+                    this.$router.replace({path:'/index'})
+                }else {
+                    alert(result.message)
+                }
+            } catch (error) {
+                cosole.log(error)
+            }
         }
     }
 }

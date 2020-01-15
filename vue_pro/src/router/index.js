@@ -21,7 +21,49 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
-  }
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: () => import('../views/Index.vue') 
+  },
+  {
+    path: '/botnav',
+    name: 'botnav',
+    component: () => import('../views/Botnav.vue'),
+    children: [
+      {
+        path: '',
+        name: 'index',
+        redirect: 'index'
+      },
+      {
+        path: 'index',
+        name: 'index',
+        component: () => import('../views/Index.vue') 
+      },
+      {
+        path: 'list',
+        name: 'list',
+        component: () => import('../views/List.vue') 
+      },
+      {
+        path: 'search',
+        name: 'search',
+        component: () => import('../views/Search.vue') 
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: () => import('../views/Cart.vue') 
+      },
+      {
+        path: 'mine',
+        name: 'mine',
+        component: () => import('../views/Mine.vue') 
+      }
+    ]
+  },
 ]
 
 const router = new VueRouter({
