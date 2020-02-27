@@ -55,11 +55,17 @@ const routes = [
       {
         path: 'cart',
         name: 'cart',
+        meta: {
+          requireAuth: true        //当有这个字段的时候，就认为这个路由页面需要有登录权限的
+        },
         component: () => import('../views/Cart.vue') 
       },
       {
         path: 'mine',
         name: 'mine',
+        meta: {
+          requireAuth: true        //当有这个字段的时候，就认为这个路由页面需要有登录权限的
+        },
         component: () => import('../views/Mine.vue') 
       }
     ]

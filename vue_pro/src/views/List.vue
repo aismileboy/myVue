@@ -9,8 +9,27 @@
         </cube-scroll>
 
          <cube-scroll class="rightpanels">
-
+             <ul>
+                 <li v-for="(tag,index) in tags" :key="index">
+                     <img :src="tag.image" alt="">
+                     <p>{{tag.label}}<i class="cubeic-add" @click="addtocart($event,tag)"></i></p>
+                 </li>
+             </ul>
         </cube-scroll>
+
+        <div class="ball-wrap">
+           <transition
+                @before-enter="beforeEnter"
+                @enter="enter"
+                @afterEnter="afterEnter"
+           >
+               <div class="ball" v-if="ball.show">
+                   <div class="inner">
+                       <i class="cubeic-add"></i>
+                   </div>
+               </div>
+           </transition>
+        </div>
     </div>
 </template>
 
@@ -18,6 +37,11 @@
 export default {
     data(){
         return {
+            ball: {
+                show: false,
+                el: ''
+            },
+            tags: [],
             tabslabel: [
                 {
                     label: '热门推荐',
@@ -81,11 +105,95 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        //点击左侧分类
+        select(index){
+            this.tabslabel.forEach((val,ind) =>{
+                if(ind == index){
+                    val.active = true
+                }else {
+                    val.active = false
+                }
+            })
+            this.getclassify(index)
+        },
+        //获取分类
+        async getclassify(index){
+           const result = await this.$http.get('/api/classify',{params:{type:index}})
+           this.tags = result.data
+        },
+        //添加至购物车
+        addtocart(e,tag){
+            this.$store.commit('tocart',tag)
+            //让我们小球显示出来
+            this.ball.show = true
+            //获取点击元素
+            this.ball.el = e.target
+        },
+
+        beforeEnter(el) {
+            //让小球移动到点击得位置
+            //获取点击位置
+            console.log(el)
+            const dom  = this.ball.el                           //获取点击dom节点
+            console.log(dom)
+            const rect = dom.getBoundingClientRect()            //获取点击dom的位置
+            console.log(rect)
+            const x = rect.left - window.innerWidth*0.7
+            const y = rect.top - window.innerHeight
+            console.log(x,y)
+            el.style.display = 'block'
+            el.style.transform = `translate3d(0,${y}px,0)`
+            const inner = el.querySelector('.inner')
+            inner.style.transform = `translate3d(${x}px,0,0)`
+        },
+        enter(el,done) {
+            //触发重绘
+            document.body.offsetHeight
+            //小球移动回到原点，就是购物车的位置
+            el.style.transform = `translate3d(0,0,0)`
+            const inner = el.querySelector('.inner')
+            inner.style.transform = `translate3d(0,0,0)`
+            //过渡完成后执行的事件
+            el.addEventListener('transitionend',done)
+        },
+        afterEnter(el) {
+            //结束隐藏小球
+            this.ball.show = false
+            el.style.display = 'none'
+        }
+    },
+    created(){
+        //获取默认得分类数据
+        this.getclassify(0)
+    },
+    mounted(){
+       //动态设置滚动盒子的高度 
+       const leftpanels = document.querySelector('.leftpanels')             //获取左盒子元素节点
+       const rightpanels = document.querySelector('.rightpanels')           //获取右盒子元素节点
+       const bodyheight = document.documentElement.clientHeight             //获取窗口高度
+       
+       leftpanels.style.height = bodyheight-57+'px'
+       rightpanels.style.height = bodyheight-57+'px'
+       
     }
 }
 </script>
 
 <style lang="stylus" scoped>
+    .ball-wrap
+        .ball
+            position fixed
+            left 70%
+            bottom 10px
+            z-index 1003
+            color red
+            transition all .8s cubic-bezier(0.49,-0.29,0.75,0.41)
+            .inner
+                width 16px
+                height 16px
+                transition all .8s linear
     .panelsbox
         display flex
         .leftpanels
@@ -113,4 +221,6 @@ export default {
                     img 
                         width 80px
                         height  80px
+                    .cubeic-add
+                        font-size 18px
 </style>

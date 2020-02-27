@@ -186,6 +186,235 @@ module.exports = {
                   ]
                 })
               })
+
+              //获取分类页得分类接口
+              app.get('/api/classify',(req,res) =>{
+               switch(req.query.type){
+                 case '0':
+                   res.json({
+                    data:[
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                        {
+                          image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                          label:'华为'
+                      },
+                        {
+                          image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                          label:'荣耀'
+                      },
+                        {
+                          image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                          label:'雪梨手机'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                        {
+                          image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                          label:'华为'
+                      },
+                        {
+                          image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                          label:'荣耀'
+                      },
+                        {
+                          image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                          label:'雪梨手机'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                        {
+                          image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                          label:'华为'
+                      },
+                        {
+                          image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                          label:'荣耀'
+                      },
+                        {
+                          image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                          label:'雪梨手机'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                        {
+                          image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                          label:'华为'
+                      },
+                        {
+                          image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                          label:'荣耀'
+                      },
+                        {
+                          image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                          label:'雪梨手机'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                        {
+                          image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                          label:'华为'
+                      },
+                        {
+                          image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                          label:'荣耀'
+                      },
+                        {
+                          image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                          label:'雪梨手机'
+                      },
+                      
+                  ]
+               });
+               break;
+               case '1':
+                res.json({
+                  data: [
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                      {
+                          image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                          label:'小米'
+                      },
+                  ]
+              });
+              break; 
+              case '2':
+                res.json({
+                    data: [
+                        {
+                            image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                            label:'华为'
+                        },
+                        {
+                            image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                            label:'华为'
+                        },
+                        {
+                            image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                            label:'华为'
+                        },
+                        {
+                            image:'https://img14.360buyimg.com/focus/s140x140_jfs/t11929/135/2372293765/1396/e103ec31/5a1692e2Nbea6e136.jpg',
+                            label:'华为'
+                        }
+                    ]
+                });
+                break;
+                case '3':
+                res.json({
+                    data: [
+                        {
+                            image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                            label:'荣耀'
+                        },
+                        {
+                            image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                            label:'荣耀'
+                        },
+                        {
+                            image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                            label:'荣耀'
+                        },
+                        {
+                            image:'https://img10.360buyimg.com/focus/s140x140_jfs/t12178/348/911080073/4732/db0ad9c7/5a1692e2N6df7c609.jpg',
+                            label:'荣耀'
+                        },
+                    ]
+                });
+                break;
+                case '4':
+                res.json({
+                    data: [
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                    ]
+                });
+                break;
+                case '5':
+                res.json({
+                    data: [
+                        {
+                            image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                            label:'雪梨手机'
+                        },
+                        {
+                            image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                            label:'雪梨手机'
+                        },
+                        {
+                            image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                            label:'雪梨手机'
+                        },
+                        {
+                            image:'https://img20.360buyimg.com/focus/s140x140_jfs/t13759/194/897734755/2493/1305d4c4/5a1692ebN8ae73077.jpg',
+                            label:'雪梨手机'
+                        },
+                    ]
+                });
+                break;
+                case '6':
+                res.json({
+                    data: [
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                        {
+                            image:'https://img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png',
+                            label:'小米'
+                        },
+                    ]
+                });
+                break;
+                default:
+                  res.json({
+                    data: []
+                  })
+               }
+              })
             }
         }
     },

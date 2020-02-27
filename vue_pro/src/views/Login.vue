@@ -74,8 +74,12 @@ export default {
                 if(result.code == '0'){
                     this.$store.commit('settoken',result.token)
                     window.localStorage.setItem('token',result.token)
-                    //跳转至首页
-                    this.$router.replace({path:'/index'})
+                    //判断路由是否带参，带参就去到重定向参数地址，否则去首页
+                    if(this.$route.query.redirect){
+                        this.$router.replace({path: this.$route.query.redirect})
+                    }else {
+                         this.$router.replace({path: '/botnav'})
+                    }
                 }else {
                     alert(result.message)
                 }
